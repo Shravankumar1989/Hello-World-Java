@@ -40,4 +40,5 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: build-artifacts
-        path: build/libs/
+        path: build/classes/
+        if-no-files-found: warn
