@@ -31,8 +31,9 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
-    - name: Run the code
+    - name: Compile and run Java application
       run: |
+        mkdir -p build/classes
         javac -d build/classes src/main/java/Main.java
         java -cp build/classes Main
 
@@ -42,3 +43,9 @@ jobs:
         name: build-artifacts
         path: build/classes/
         if-no-files-found: warn
+
+    - name: Build Docker image
+      run: docker build -t hello-world-java .
+
+    - name: Run Docker container
+      run: docker run hello-world-java
