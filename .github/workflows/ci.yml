@@ -32,7 +32,9 @@ jobs:
       run: ./gradlew build
 
     - name: Run the code
-      run: java -cp build/classes Main
+      run: |
+        javac -d build/classes src/main/java/Main.java
+        java -cp build/classes Main
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v2
